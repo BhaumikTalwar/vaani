@@ -54,7 +54,7 @@ export function createLandingPage() {
     });
 
     const githubLink = document.createElement("a");
-    githubLink.href = "https://github.com";
+    githubLink.href = "https://github.com/BhaumikTalwar/vaani";
     githubLink.target = "_blank";
     githubLink.rel = "noopener noreferrer";
     githubLink.className = "vaani-cta-button";
