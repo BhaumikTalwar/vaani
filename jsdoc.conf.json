@@ -1,0 +1,37 @@
+{
+  "source": {
+    "include": ["src"],
+    "exclude": ["node_modules", "docs"],
+    "includePattern": "\\.(js|mjs|cjs)$"
+  },
+
+  "opts": {
+    "destination": "docs",
+    "recurse": true,
+    "readme": "README.md",
+    "template": "node_modules/better-docs"
+  },
+
+  "plugins": [
+    "plugins/markdown",
+    "node_modules/better-docs/category"
+  ],
+
+  "templates": {
+    "better-docs": {
+      "name": "Amaanat",
+      "logo": "assets/logo.png",
+      "navLinks": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/BhaumikTalwar/Amaanat-Frontend"
+        }
+      ]
+    }
+  },
+
+  "tags": {
+    "allowUnknownTags": false,
+    "dictionaries": ["jsdoc"]
+  }
+}

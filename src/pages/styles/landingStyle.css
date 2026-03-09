@@ -1,0 +1,315 @@
+:root {
+    --vaani-cream: #faf8f5;
+    --vaani-sand: #f0ebe3;
+    --vaani-sand-dark: #e5ddd2;
+    --vaani-terracotta: #c4785a;
+    --vaani-sage: #8b9a7d;
+    --vaani-charcoal: #2d2a26;
+    --vaani-warm-gray: #7a746d;
+}
+
+.vaani-landing {
+    background-color: var(--vaani-cream);
+    min-height: 100vh;
+    color: var(--vaani-charcoal);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.vaani-hero {
+    background: linear-gradient(180deg, var(--vaani-cream) 0%, var(--vaani-sand) 100%);
+    border-bottom: 1px solid var(--vaani-sand-dark);
+}
+
+.vaani-hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.vaani-hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(var(--vaani-sand-dark) 1px, transparent 1px),
+        linear-gradient(90deg, var(--vaani-sand-dark) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.4;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+
+.vaani-logo {
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--vaani-charcoal);
+    line-height: 1;
+}
+
+.vaani-logo-accent {
+    color: var(--vaani-terracotta);
+}
+
+.vaani-tagline {
+    font-size: 1.5rem;
+    color: var(--vaani-warm-gray);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+.vaani-section-header {
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.vaani-section-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--vaani-charcoal);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+}
+
+.vaani-section-subtitle {
+    font-size: 1.125rem;
+    color: var(--vaani-warm-gray);
+}
+
+.vaani-feature-card {
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vaani-feature-card:hover {
+    transform: translateY(-4px);
+}
+
+.vaani-feature-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.vaani-feature-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--vaani-charcoal);
+    margin-bottom: 0.5rem;
+}
+
+.vaani-feature-desc {
+    font-size: 0.9375rem;
+    color: var(--vaani-warm-gray);
+    line-height: 1.6;
+}
+
+.vaani-code-container {
+    background: #1a1a1a;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.vaani-code-header {
+    background: #2a2a2a;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.vaani-code-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.vaani-code-dot-red {
+    background: #ff5f56;
+}
+
+.vaani-code-dot-yellow {
+    background: #ffbd2e;
+}
+
+.vaani-code-dot-green {
+    background: #27ca40;
+}
+
+.vaani-code-filename {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: #888;
+    font-family: 'SF Mono', Monaco, monospace;
+}
+
+.vaani-code-block {
+    padding: 1.5rem;
+    font-family: 'SF Mono', 'Fira Code', Monaco, monospace;
+    font-size: 0.8125rem;
+    line-height: 1.8;
+    overflow-x: auto;
+}
+
+.vaani-code-line {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    align-items: start;
+}
+
+.vaani-code-number {
+    color: #6e7681;
+    text-align: right;
+    padding-right: 1rem;
+    user-select: none;
+}
+
+.vaani-code-content {
+    white-space: pre;
+    flex: 1;
+}
+
+.vaani-code-keyword {
+    color: #ff7b72;
+}
+
+.vaani-code-string {
+    color: #a5d6ff;
+}
+
+.vaani-code-function {
+    color: #d2a8ff;
+}
+
+.vaani-code-comment {
+    color: #8b949e;
+    font-style: italic;
+}
+
+.vaani-code-property {
+    color: #79c0ff;
+}
+
+.vaani-code-operator {
+    color: #ff7b72;
+}
+
+.vaani-stat-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 16px;
+    border: 1px solid var(--vaani-sand-dark);
+}
+
+.vaani-stat-value {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--vaani-terracotta);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.vaani-stat-label {
+    font-size: 0.9375rem;
+    color: var(--vaani-warm-gray);
+}
+
+.vaani-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--vaani-charcoal);
+    color: white;
+    border: none;
+    padding: 0.875rem 1.75rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.vaani-cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(45, 42, 38, 0.3);
+}
+
+.vaani-cta-button-secondary {
+    background: white;
+    color: var(--vaani-charcoal);
+    border: 2px solid var(--vaani-sand-dark);
+}
+
+.vaani-cta-button-secondary:hover {
+    border-color: var(--vaani-charcoal);
+    box-shadow: none;
+}
+
+.vaani-footer {
+    border-top: 1px solid var(--vaani-sand-dark);
+    padding: 2rem 0;
+}
+
+@media (max-width: 768px) {
+    .vaani-logo {
+        font-size: 2.5rem;
+    }
+
+    .vaani-tagline {
+        font-size: 1.125rem;
+    }
+
+    .vaani-section-title {
+        font-size: 1.75rem;
+    }
+
+    .vaani-stat-card {
+        padding: 1.25rem;
+    }
+
+    .vaani-stat-value {
+        font-size: 2rem;
+    }
+
+    .vaani-feature-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .vaani-code-line {
+        grid-template-columns: 2rem 1fr;
+    }
+
+    .vaani-code-number {
+        font-size: 0.75rem;
+        padding-right: 0.5rem;
+    }
+
+    .vaani-code-block {
+        padding: 1rem;
+        font-size: 0.75rem;
+    }
+
+    .vaani-cta-button {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.9375rem;
+    }
+}
+
+.vaani-code-block {
+    padding: 1.5rem;
+    font-family: 'SF Mono', 'Fira Code', Monaco, monospace;
+    font-size: 0.8125rem;
+    line-height: 1.8;
+    overflow-x: auto;
+
+    color: #e6edf3;
+    /* base code color */
+}
