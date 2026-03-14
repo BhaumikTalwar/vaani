@@ -10,19 +10,29 @@
     "docs:generate": "jsdoc -c jsdoc.conf.json",
     "docs:serve": "vite preview --port 4173 --strictPort",
     "lint": "eslint src/",
-    "lint:fix": "eslint src/ --fix"
+    "lint:fix": "eslint src/ --fix",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
+    "docker:build:linux": "docker build --build-arg TARGET=x86_64-unknown-linux-gnu -f Dockerfile.tauri .",
+    "docker:build:windows": "docker build --build-arg TARGET=x86_64-pc-windows-gnu -f Dockerfile.tauri .",
+    "docker:build:arm64": "docker build --build-arg TARGET=aarch64-unknown-linux-gnu -f Dockerfile.tauri .",
+    "docker:build:all": "bash scripts/build-tauri-docker.sh"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@tauri-apps/cli": "^2.10.1",
+    "better-docs": "^2.7.3",
     "eslint": "^10.0.3",
     "eslint-plugin-jsdoc": "^62.7.1",
     "globals": "^17.4.0",
     "jsdoc": "^4.0.5",
-    "vite": "^7.3.1",
-    "better-docs": "^2.7.3"
+    "vite": "^7.3.1"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.1",
+    "@tauri-apps/api": "^2.10.1",
+    "@tauri-apps/plugin-shell": "^2.3.5",
     "dompurify": "^3.3.2",
     "tailwindcss": "^4.2.1"
   }

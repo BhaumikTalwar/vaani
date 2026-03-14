@@ -4,6 +4,19 @@ import { createContainer, createFlex, createGrid, createCard } from "../componen
 import "./styles/landingStyle.css";
 
 /**
+ * Open external URL - works in both browser and Tauri
+ * @param {string} url - The URL to open
+ */
+async function openExternalUrl(url) {
+    if (window.__TAURI__) {
+        const { open } = await import("@tauri-apps/plugin-shell");
+        await open(url);
+    } else {
+        window.open(url, "_blank", "noopener,noreferrer");
+    }
+}
+
+/**
  * Creates the Vaani landing page - "Get back to your roots"
  * @function createLandingPage
  * @returns {HTMLElement} The landing page element
@@ -55,8 +68,6 @@ export function createLandingPage() {
 
     const githubLink = document.createElement("a");
     githubLink.href = "https://github.com/BhaumikTalwar/vaani";
-    githubLink.target = "_blank";
-    githubLink.rel = "noopener noreferrer";
     githubLink.className = "vaani-cta-button";
     githubLink.innerHTML = `
         <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
@@ -64,6 +75,10 @@ export function createLandingPage() {
         </svg>
         View on GitHub
     `;
+    githubLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        openExternalUrl("https://github.com/BhaumikTalwar/vaani");
+    });
 
     ctaButtons.appendChild(githubLink);
 
