@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "docs:generate": "jsdoc -c jsdoc.conf.json",
-    "docs:serve": "vite preview --port 4173 --strictPort",
+    "docs:serve": "vite preview --port 4173 --strictPort --outDir ./docs/",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix"
   },
