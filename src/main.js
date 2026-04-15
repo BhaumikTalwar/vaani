@@ -109,6 +109,10 @@ async function main() {
     //         codec: JsonCodec,
     //     });
     // 
+    //     /**
+    //      * @constant {AuthService} The main auth service used to authenticate users 
+    //      * NOTE- It takes the "Router Routes" here in config not "Endpoints"
+    //      */
     //     const authService = new AuthService(
     //         apiClient, {
     //         loginRoute: "/login",

@@ -22,7 +22,7 @@ import { ApiClient } from "../core/ApiClient/api.js";
  */
 
 /**
- * @typedef {object} AuthServiceConfig
+ * @typedef {object} AuthServiceConfig these are the "Router Routes"
  * @property {string} loginRoute the router route for login
  * @property {string} logoutRedirect the router route for redirect
  * @property {string} defaultAuthenticatedRedirect the default Authenticated rout
