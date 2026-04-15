@@ -47,7 +47,7 @@ const AUTH_IS_AUTHENTICATED = "auth.isAuthenticated";
 export class AuthService {
 
     /** @type {ApiClient} */
-    #apiClient = null
+    #apiClient = null;
 
     /** @type {boolean} */
     #initialized = false;
@@ -68,9 +68,9 @@ export class AuthService {
      * @param {Partial<AuthServiceConfig>} [config] the config
      */
     constructor(apiClient, config = {}) {
-        if (apiClient === null) throw new Error("Api Client is Null")
+        if (apiClient === null) throw new Error("Api Client is Null");
 
-        this.#apiClient = apiClient
+        this.#apiClient = apiClient;
         this.#config = Object.freeze({
             loginRoute: "/login",
             logoutRedirect: "/signin",
@@ -261,4 +261,3 @@ export class AuthService {
         };
     }
 }
-

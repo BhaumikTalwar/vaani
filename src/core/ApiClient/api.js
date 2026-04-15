@@ -413,17 +413,17 @@ export class ApiClient {
         const message = data?.message || data?.error || `Request failed with status ${response.status}`;
 
         switch (response.status) {
-            case 401:
-                return new AuthError(message, data);
-            case 403:
-                return new ForbiddenError(message, data);
-            case 404:
-                return new NotFoundError(message, data);
-            case 400:
-            case 422:
-                return new ValidationError(message, data, response.status);
-            default:
-                return new ApiError(message, response.status, data);
+        case 401:
+            return new AuthError(message, data);
+        case 403:
+            return new ForbiddenError(message, data);
+        case 404:
+            return new NotFoundError(message, data);
+        case 400:
+        case 422:
+            return new ValidationError(message, data, response.status);
+        default:
+            return new ApiError(message, response.status, data);
         }
     }
 

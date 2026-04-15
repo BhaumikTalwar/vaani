@@ -8,7 +8,7 @@ import { createLandingPage } from "./pages/LandingPage.js";
 // Uncomment for integration with a API Provider
 // The Routes are defined in ./constants/endpoints.js
 //
-// import { ApiClient } from "./core/ApiClient/api"; 
+// import { ApiClient } from "./core/ApiClient/api";
 // import { AuthService } from "./services/authService";
 
 /** @type {ReturnType<typeof setTimeout> | null} */
@@ -98,7 +98,7 @@ async function main() {
     setupRouterListeners();
 
     //     For Api Integration with backend and Auth Service Usage
-    // 
+    //
     //     /**
     //      * @constant {ApiClient} The main API client instance for the application.
     //      * Base URL and timeout are injected at build time via Vite environment variables.
@@ -108,9 +108,9 @@ async function main() {
     //         timeout: __VITE_API_TIMEOUT__,
     //         codec: JsonCodec,
     //     });
-    // 
+    //
     //     /**
-    //      * @constant {AuthService} The main auth service used to authenticate users 
+    //      * @constant {AuthService} The main auth service used to authenticate users
     //      * NOTE- It takes the "Router Routes" here in config not "Endpoints"
     //      */
     //     const authService = new AuthService(
@@ -120,7 +120,7 @@ async function main() {
     //         defaultAuthenticatedRedirect: "/",
     //         unauthorizedRoute: "/unauthorized",
     //     });
-    // 
+    //
     //     try {
     //         authService.initialize();
     //         await authService.checkSession();
@@ -129,7 +129,7 @@ async function main() {
     //     } finally {
     //         state.set(IS_APP_LOADING, false);
     //     }
-    // 
+    //
 
 
     router.setNotFoundComp(NotFoundPage);
