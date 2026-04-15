@@ -1,10 +1,10 @@
 // @ts-check
 
-import { apiClient } from "../core/ApiClient/index.js";
 import { state } from "../core/state.js";
 import { router } from "../core/router.js";
 import { API_ENDPOINTS } from "../constants/endpoints.js";
 import { AuthError } from "../core/ApiClient/errors.js";
+import { ApiClient } from "../core/ApiClient/api.js";
 
 /**
  * @typedef {'idle' | 'pending' | 'authenticated' | 'unauthenticated'} AuthStatus
@@ -44,7 +44,11 @@ const AUTH_IS_AUTHENTICATED = "auth.isAuthenticated";
  * @class AuthService
  * @classdesc The class for Auth Service also gives general guard funcs
  */
-class AuthService {
+export class AuthService {
+
+    /** @type {ApiClient} */
+    #apiClient = null
+
     /** @type {boolean} */
     #initialized = false;
 
@@ -60,9 +64,13 @@ class AuthService {
 
     /**
      * the construtore for the AuthService
+     * @param {ApiClient} apiClient The Api Client to use
      * @param {Partial<AuthServiceConfig>} [config] the config
      */
-    constructor(config = {}) {
+    constructor(apiClient, config = {}) {
+        if (apiClient === null) throw new Error("Api Client is Null")
+
+        this.#apiClient = apiClient
         this.#config = Object.freeze({
             loginRoute: "/login",
             logoutRedirect: "/signin",
@@ -85,7 +93,7 @@ class AuthService {
     initialize() {
         if (this.#initialized) return;
 
-        apiClient.setSessionExpiredHandler(() => {
+        this.#apiClient.setSessionExpiredHandler(() => {
             this.#handleSessionExpired();
         });
 
@@ -100,7 +108,7 @@ class AuthService {
         state.set(AUTH_STATUS_KEY, "pending");
 
         try {
-            const res = await apiClient.get(API_ENDPOINTS.Me);
+            const res = await this.#apiClient.get(API_ENDPOINTS.Me);
 
             state.setBatch({
                 [AUTH_USER_KEY]: res.data,
@@ -122,7 +130,7 @@ class AuthService {
      * @returns {Promise<User>} teh user
      */
     async login(credentials) {
-        await apiClient.post(API_ENDPOINTS.Login, credentials);
+        await this.#apiClient.post(API_ENDPOINTS.Login, credentials);
         await this.checkSession();
 
         const user = this.getUser();
@@ -139,7 +147,7 @@ class AuthService {
      */
     async logout() {
         try {
-            await apiClient.post(API_ENDPOINTS.Logout, {});
+            await this.#apiClient.post(API_ENDPOINTS.Logout, {});
         } catch (err) {
             console.warn("Logout request failed", err);
         } finally {
@@ -254,9 +262,3 @@ class AuthService {
     }
 }
 
-export const authService = new AuthService({
-    loginRoute: "/login",
-    logoutRedirect: "/signin",
-    // defaultAuthenticatedRedirect: "/student/dashboard", //WARN: Have the default Authentication Redirect here
-    unauthorizedRoute: "/unauthorized",
-});

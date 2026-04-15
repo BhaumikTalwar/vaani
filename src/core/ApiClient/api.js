@@ -53,7 +53,7 @@ export class ApiClient {
     /** @type {number} */
     #defaultTimeout;
 
-    /** @type {Codec} */
+    /** @type {import("../codec.js").Codec} */
     #codec;
 
     /** @type {CsrfManager} */
@@ -80,7 +80,7 @@ export class ApiClient {
      * @param {string} config.baseURL - Base URL for all requests
      * @param {Record<string, string>} [config.headers] - Default headers
      * @param {number} [config.timeout] - Default timeout in ms
-     * @param {Codec} [config.codec] - Codec (json/MsgPack)
+     * @param {import("../codec.js").Codec} [config.codec] - Codec (json/MsgPack)
      */
     constructor(config) {
         this.#baseURL = config.baseURL.replace(/\/$/, "");
@@ -91,7 +91,7 @@ export class ApiClient {
 
     /**
      * Set Codec (JSON, MessagePack)
-     * @param {Codec} codec the coodec to use
+     * @param {import("../codec.js").Codec} codec the coodec to use
      * @returns {ApiClient} for chaining
      */
     setCodec(codec) {
@@ -413,17 +413,17 @@ export class ApiClient {
         const message = data?.message || data?.error || `Request failed with status ${response.status}`;
 
         switch (response.status) {
-        case 401:
-            return new AuthError(message, data);
-        case 403:
-            return new ForbiddenError(message, data);
-        case 404:
-            return new NotFoundError(message, data);
-        case 400:
-        case 422:
-            return new ValidationError(message, data, response.status);
-        default:
-            return new ApiError(message, response.status, data);
+            case 401:
+                return new AuthError(message, data);
+            case 403:
+                return new ForbiddenError(message, data);
+            case 404:
+                return new NotFoundError(message, data);
+            case 400:
+            case 422:
+                return new ValidationError(message, data, response.status);
+            default:
+                return new ApiError(message, response.status, data);
         }
     }
 

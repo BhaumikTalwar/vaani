@@ -2,9 +2,14 @@
 import "./styles.css";
 import { router } from "./core/router.js";
 import { state } from "./core/state.js";
-import { authService } from "./services/authService.js";
 import { NotFoundPage } from "./pages/NotFoundPage.js";
 import { createLandingPage } from "./pages/LandingPage.js";
+
+// Uncomment for integration with a API Provider
+// The Routes are defined in ./constants/endpoints.js
+//
+// import { ApiClient } from "./core/ApiClient/api"; 
+// import { AuthService } from "./services/authService";
 
 /** @type {ReturnType<typeof setTimeout> | null} */
 let loaderTimeout = null;
@@ -92,22 +97,45 @@ async function main() {
 
     setupRouterListeners();
 
-    try {
-        authService.initialize();
-        await authService.checkSession();
-    } catch (error) {
-        console.error("App initialization failed:", error);
-    } finally {
-        state.set(IS_APP_LOADING, false);
-    }
+    //     For Api Integration with backend and Auth Service Usage
+    // 
+    //     /**
+    //      * @constant {ApiClient} The main API client instance for the application.
+    //      * Base URL and timeout are injected at build time via Vite environment variables.
+    //      */
+    //     const apiClient = new ApiClient({
+    //         baseURL: __VITE_API_BASE_URL__,
+    //         timeout: __VITE_API_TIMEOUT__,
+    //         codec: JsonCodec,
+    //     });
+    // 
+    //     const authService = new AuthService(
+    //         apiClient, {
+    //         loginRoute: "/login",
+    //         logoutRedirect: "/signin",
+    //         defaultAuthenticatedRedirect: "/",
+    //         unauthorizedRoute: "/unauthorized",
+    //     });
+    // 
+    //     try {
+    //         authService.initialize();
+    //         await authService.checkSession();
+    //     } catch (error) {
+    //         console.error("App initialization failed:", error);
+    //     } finally {
+    //         state.set(IS_APP_LOADING, false);
+    //     }
+    // 
+
 
     router.setNotFoundComp(NotFoundPage);
-
     router.addRoute({
         path: "/",
         title: "Vaani - Get back to your roots",
         component: async () => createLandingPage(),
     });
+
+    //TODO: Add your routes over here
 
     router.init("app");
 }
